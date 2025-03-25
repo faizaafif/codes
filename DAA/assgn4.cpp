@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string.h>
-#include<queue>
+
 using namespace std;
  
 class avlNode{
@@ -10,8 +10,8 @@ class avlNode{
  
 	public:
 		avlNode(){
-			word = "na";
-			meaning = "na";
+			word = "";
+			meaning = "";
 			left = nullptr;
 			right = nullptr;
 		}
@@ -106,26 +106,22 @@ class avlTree{
 			temp->right = parent;
 			return temp;
 		}
- 
 		avlNode* rr_rotation(avlNode* parent){
 			avlNode *temp = parent->right;
 			parent->right = temp->left;
 			temp->left = parent;
 			return temp;
 		}
- 
 		avlNode* lr_rotation(avlNode* parent){
 			avlNode *temp = parent->left;
 			parent->left = rr_rotation(temp);
 			return ll_rotation(parent);
 		}
- 
 		avlNode* rl_rotation(avlNode* parent){
 			avlNode *temp = parent->right;
 			parent->right = ll_rotation(temp);
 			return rr_rotation(parent);
 		}
- 
 		void display(avlNode* ptr, int level = 1){
             if (ptr != nullptr){
                 display(ptr->right, level + 1);
@@ -141,7 +137,6 @@ class avlTree{
                 cout << endl;
             }
         }
- 
 		void preorder(avlNode* root){
 			if(root !=NULL){
 				cout << root->word << " : " << root->meaning << endl;
@@ -149,7 +144,6 @@ class avlTree{
 				preorder(root->right);
 			}
 		}
- 
 		void inorder(avlNode* root){
 			if(root != NULL){
 				inorder(root->left);
@@ -157,7 +151,6 @@ class avlTree{
 				inorder(root->right);
 			}
 		}
- 
 		void postorder(avlNode* root){
 			if(root != NULL){
 				postorder(root->left);
